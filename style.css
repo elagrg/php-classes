@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 16px; 
+    text-align: center;    
+}
+
+.predracun {
+    padding: 10px;
+    margin: 10px;   
+}
+
+.label {
+    font-weight: bold;
+    text-align: left; 
+}  
+
+.ukupno {
+    text-align: right;
+    background-color: #f0f6fc;
+}
+
+.ukupnoSve {
+    font-weight: bold;
+    text-align: right;
+}
+
+.boja {
+    background-color: #80ced6;
+}
+
+.stupac {
+    width: 447px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid #4285F4;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+    height: 15px;
+    border: 2px solid #4285F4;
+}
+
+th {
+    font-weight: bold;
+    background-color: #80ced6;
+}

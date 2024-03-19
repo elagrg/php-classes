@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predračun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="predracun">PREDRAČUN BR. 2022-16950-63 ZA USLUGU SMJEŠTAJA</h1>
+    <div class="predracun">
+        <div>
+            <table>
+                <thead>
+                    <t>
+                        <th colspan="3" scope="colgroup">Usluga</th>
+                        <th>Cijena</th>
+                        <th class="stupac">Količina</th>
+                        <th>Ukupno</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($predracun->detaljiRezervacije as $stavka): ?>
+                        <tr>
+                            <td class="label"><?php echo $stavka->idRezervacije; ?></td>
+                            <td><?php echo $stavka->prikaziRasponBoravka(); ?></td>
+                            <td><?php echo $stavka->kapacitet . " (osobe)"; ?></td>
+                            <td><?php echo $stavka->cijena . " €"; ?></td>
+                            <td><?php echo $stavka->izracunajKolicinuNocenja() . " (noćenja)"; ?></td>
+                            <td class="ukupno"><?php echo $stavka->izracunajUkupno() . " €"; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                    <tr>
+                        <td colspan="6" scope="colgroup"></td>
+                    </tr>
+                    <tr class="boja">
+                        <td class="label" colspan="5" scope="colgroup">Ukupno</td>
+                        <td class="ukupnoSve"><?php echo $predracun->izracunajUkupanIznos() . " €"; ?></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div>
+                <p>Uključeno u cijenu (bez dodatne naplate): turistička pristojba</p>
+            </div>
+        </div>
+
+        <div>
+            <h1>DINAMIKA PLAĆANJA</h1>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Uplata</th>
+                        <th>Način plaćanja</th>
+                        <th>Vrijeme plaćanja</th>
+                        <th>Iznos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label">Akontacija</td>
+                        <td><?php echo $predracun->nacinPlacanja ?></td>
+                        <td><?php echo "Najkasnije " . $predracun->vrijemePlacanja . " do 11:00"; ?></td>
+                        <td class="ukupnoSve"><?php echo $predracun->izracunajAkontaciju() . " €"; ?></td>
+                    </tr>
+                    <tr>
+                        <td class="label">Ostatak iznosa</td>
+                        <td><?php echo $predracun->nacinPlacanja ?></td>
+                        <td><?php echo "Najkasnije " . $predracun->vrijemePlacanja . " do 15:00"; ?></td>
+                        <td class="ukupnoSve"><?php echo $predracun->izracunajAkontaciju() . " €" ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <p class="predracun">Uplatom akontacije gost potvrđuje da je upoznat te se slaže s Općim uvjetima pružanja usluga smještaja u privatnim kapacitetima.</p>
+    </div>
+
+</body>
+</html>
